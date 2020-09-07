@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
@@ -34,7 +35,10 @@ namespace WebApplication2.Controllers
         }
         public IActionResult login(string username, string passwd)
         {
-            if (username == "ryan" && passwd == "123456")
+            User1 login = new User1();
+            //if (username == "ryan" && passwd == "123456")
+            //return LocalRedirect("~/Ryan/product?count=9");
+            if (login.loginCheck(username, passwd))
                 return LocalRedirect("~/Ryan/product?count=9");
             else
                 return Redirect("http://www.google.com.tw");
