@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Web;
-
-
+using System.Net.Mime;
 
 namespace WebApplication2.Models
 {
@@ -33,7 +32,7 @@ namespace WebApplication2.Models
             {
                 if (reader.Read())
                 {
-                    if (passwd== reader["passwd"].ToString())
+                    if ( passwd== reader["passwd"].ToString())
                     {
                         //Session["loginState"] = "1";
                         //Session["user"] = user.Text;
@@ -43,9 +42,12 @@ namespace WebApplication2.Models
                     }
                     else
                     {
+
                         //state.Text = "密碼不正確";
+                        
                         connection.Close();
                         return false;
+                        
                     }
                 }
             }
@@ -54,7 +56,7 @@ namespace WebApplication2.Models
             {
                 //state.Text = "無此帳戶";
                 connection.Close();
-                return true;
+                return false;
             }
             connection.Close();
             return false;

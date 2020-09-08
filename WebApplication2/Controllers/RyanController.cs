@@ -10,8 +10,10 @@ namespace WebApplication2.Controllers
 {
     public class RyanController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string error = "")
         {
+            if(error != "") ViewBag.Msg = "登入失敗";
+
             if (HttpContext.Session.Keys.Contains("logined"))
             {
                 if(HttpContext.Session.GetString("logined") == "true")
@@ -20,10 +22,11 @@ namespace WebApplication2.Controllers
                 }
                 else
                 {
+                    
                     return View();
                 }
             }
-       
+            
             return View();
         }
         public IActionResult product( int count)
@@ -33,15 +36,26 @@ namespace WebApplication2.Controllers
             
             return View();
         }
+        //[HttpPost]
         public IActionResult login(string username, string passwd)
         {
             User1 login = new User1();
+
+
             //if (username == "ryan" && passwd == "123456")
             //return LocalRedirect("~/Ryan/product?count=9");
-            if (login.loginCheck(username, passwd))
-                return LocalRedirect("~/Ryan/product?count=9");
-            else
-                return Redirect("http://www.google.com.tw");
+            if ( login.loginCheck(username, passwd))
+             return LocalRedirect("~/Ryan/product?count=9");
+            else 
+            { 
+                //return Redirect("http://www.google.com.tw");
+                
+                //return View();
+            }
+            //return View("Index");
+
+            return LocalRedirect("~/Ryan?error=1") ;
+            
         }
     }
 }
