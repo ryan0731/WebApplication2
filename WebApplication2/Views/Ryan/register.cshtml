@@ -7,15 +7,17 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
-    <form method = "post" action="/Ryan/login" >
-        
+    <form method="post" action="/Ryan/regCheck">
+
         <label for="username">帳號:</label><br>
         <input type="text" id="username" name="username"><br>
         <label for="passwd">密碼:</label><br>
         <input type="text" id="passwd" name="passwd"><br><br>
-         <div><span style="color:red">@ViewBag.Msg</span></div>                                                
-                                                        
-        <input type="submit" value="登入">
-        <a href = "/Ryan/register">註冊帳戶</a>
+        <label for="name">姓名:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">信箱:</label><br>
+        <input type="text" id="email" name="email"><br>
+        <input type="submit" value="註冊">
+        
     </form>
 </div>

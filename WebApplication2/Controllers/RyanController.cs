@@ -55,7 +55,22 @@ namespace WebApplication2.Controllers
             //return View("Index");
 
             return LocalRedirect("~/Ryan?error=1") ;
+           
             
         }
+        public IActionResult register()
+            {
+                return View();
+            }
+        public IActionResult regCheck(string username, string passwd, string name,string email)
+        {
+            User1 reg = new User1();
+            if (reg.regCheck(username, passwd, name, email))
+                return LocalRedirect("~/Ryan/product?count=9");
+            else
+                return LocalRedirect("/Ryan/register");
+            
+        }
+
     }
 }

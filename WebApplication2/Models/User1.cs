@@ -61,5 +61,23 @@ namespace WebApplication2.Models
             connection.Close();
             return false;
         }
+        public bool regCheck(string username, string passwd, string name, string email)
+        {
+            connection.Open();
+            string commandStr = $"insert into dbo.customers(username,passwd,name,email) values ('{username}', '{passwd}', '{name}','{email}')";
+            command = new SqlCommand(commandStr, connection);
+            try
+            {
+                command.ExecuteNonQuery().ToString();
+                connection.Close();
+                return true;
+            }
+            catch (Exception )
+            {
+                connection.Close();
+                return false;
+            }
+
+        }
     }
 }
