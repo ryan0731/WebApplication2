@@ -4,5 +4,34 @@
 @{
     ViewData["Title"] = "產品頁面";
 }
+@model WebApplication2.Models.Cart;
+@{ List<Data> DataList = ViewBag.DataList;}
+
 <p>產品頁面</p>
-<p>@ViewData["content"]</p>
+
+<body>
+    @foreach (Data data in DataList)
+    {
+        
+        <img src= "~/images/@data.image" WIDTH="100" HEIGHT="100" BORDER="0" ALT="" />
+        <table class="center">
+            <tr>
+
+                <td><label for="id">編號</label></td>
+                <td><label>@data.id</label></td>
+            </tr>
+            <tr>
+                <td><label for="productname">產品名稱</label></td>
+                <td><label>@data.productname</label></td>
+            </tr>
+            <tr>
+                <td><label for="price">盤子價</label></td>
+                <td><label>@data.price</label></td>
+            </tr>
+            <tr>
+                <td><label for="productdescribe">試用感受</label></td>
+                <td><label>@data.productdescribe</label></td>
+            </tr>
+        </table>
+    }
+</body>

@@ -35,15 +35,23 @@ namespace WebApplication2.Controllers
 
         public IActionResult product()
         {
-            string content = string.Empty;
+            /*string content = string.Empty;
 
             if (HttpContext.Session.Keys.Contains("hello"))
             {
                 content = HttpContext.Session.GetString("hello");
                 ViewData["content"] = content;
+            }*/
+            
+            Cart cart = new Cart();
+            for(int i = 11; i < 14; i++)
+            {
+            cart.Select(i);
+            List<Data> DataList = cart.DataList;
+            ViewBag.DataList = DataList;
+            
             }
-
-            return View();
+            return View(model:cart);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
